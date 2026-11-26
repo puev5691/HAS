@@ -19,7 +19,7 @@
 
 /* [Быстрый экспорт] */
 // Выбор детали для вывода/экспорта (STL)
-export_part_sel = 0;  // default: full assembly // [0:Сборка (все вместе),1:Труба — все секции (разложить),2:Площадка под трубу,3:Крепление к плоскости,4:Шаблон рефлектора,5:Треугольник согласования (просмотр),6:Кондуктор дельта-матча]
+export_part_sel = 0;  // [0:Сборка (все вместе),1:Труба — все секции (разложить),2:Площадка под трубу,3:Крепление к плоскости,4:Шаблон рефлектора,5:Треугольник согласования (просмотр),6:Кондуктор дельта-матча,7:Отдельная секция трубы]
 
 /* [РЧ параметры] */
 // Рабочая частота (МГц)
@@ -190,6 +190,7 @@ export_part =
     (export_part_sel==3) ? "wall_mount" :
     (export_part_sel==4) ? "reflector_template" :
     (export_part_sel==5) ? "delta_match_preview" :
+    (export_part_sel==7) ? "tube_all_sections" :
     "delta_match_jig";
 
 /* [Разъём и точка питания] */
@@ -294,7 +295,6 @@ tube_all_sectionss = tube_all_sectionss_auto;
 reflector_d_auto = lambda_mm * 0.85;
 reflector_d = (reflector_mode == "manual") ? reflector_d_manual : reflector_d_auto;
 // Effective mechanical base so the triangle always reaches the tube even if connector is pushed outward
-delta_base_eff = max(0, conn_offset_r_eff - r_helix);
 
 // Площадка под трубу: чуть больше трубы (доступ отвёрткой)
 plate_od = tube_od + 2*plate_radial_clearance;
@@ -360,6 +360,7 @@ delta_tap_auto = delta_height_auto * 0.45;
 
 delta_base = (delta_mode == "manual" && delta_base_manual > 0) ? delta_base_manual : delta_base_auto;
 conn_offset_r_eff = max(conn_offset_r_eff_raw, r_helix + delta_base);  // keep connector close enough to delta-triangle
+delta_base_eff = max(0, conn_offset_r_eff - r_helix);
 wall_block_xy = max(reflector_d/2*1.05 - 15, conn_offset_r_eff + conn_finger_d/2 + wall_block_margin + 4);
 delta_height = (delta_mode == "manual" && delta_height_manual > 0) ? delta_height_manual : delta_height_auto;
 delta_tap = (delta_mode == "manual" && delta_tap_manual > 0) ? delta_tap_manual : delta_tap_auto;
@@ -832,7 +833,8 @@ module assembly() {
 if (export_part == "assembly") {
     assembly();
 } else if (export_part == "tube_all_sections") {
-    tube_all_sections(0);
+    assert(export_section >= 0 && export_section < tube_all_sectionss && floor(export_section) == export_section, "Индекс секции вне диапазона")
+        tube_all_sections(export_section);
 } else if (export_part == "tube_all_sectionss_layout") {
     tube_all_sectionss_layout();
 } else if (export_part == "plate") {
