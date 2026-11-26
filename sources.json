@@ -1,0 +1,100 @@
+{
+  "title": "Атлас цилиндрических винтовых антенн",
+  "version": "1.0",
+  "checkedAt": "2026-11-25",
+  "scope": "Гражданский учебный сайт. Цилиндрическая однопроводная равномерная воздушная винтовая антенна. Не плоская печатная спираль, не коническая и не квадрифилярная конструкция.",
+  "notice": "Ссылки ведут на внешние материалы. Полные PDF не включены в этот сайт; текст и схемы атласа — собственное изложение.",
+  "sources": [
+    {
+      "id": "source-kraus",
+      "number": 1,
+      "kind": "ОРИГИНАЛЬНАЯ СТАТЬЯ",
+      "title": "The Helical Antenna",
+      "author": "John D. Kraus",
+      "year": 1949,
+      "url": "https://doi.org/10.1109/JRPROC.1949.231279",
+      "secondaryUrl": null,
+      "use": "Исходные определения геометрии и различение normal/axial; поляризация зависит от геометрии, не от одного наличия витков. Проверенный фрагмент: с.263–265, рис.1–2.",
+      "access": "Библиографическая ссылка DOI. Доступ к полному тексту зависит от издателя; прежняя открытая копия недоступна при повторной проверке.",
+      "researchId": "K49"
+    },
+    {
+      "id": "source-nasa",
+      "number": 2,
+      "kind": "ОТЧЁТ NASA",
+      "title": "Interferometer position location concept. Final report",
+      "author": "NASA-CR-110028 / FSC-70-5193; персональные авторы в карточке не указаны",
+      "year": 1970,
+      "url": "https://ntrs.nasa.gov/citations/19700026359",
+      "secondaryUrl": "https://ntrs.nasa.gov/api/citations/19700026359/downloads/19700026359.pdf",
+      "use": "Исторические приближённые зависимости HPBW с коэффициентом52 и D/G с15; в отчёте исторически названо gain. Проверенный фрагмент: §II-6.2.5, печатная с.II-6-10.",
+      "access": "Официальная карточка NASA NTRS. При повторной сетевой проверке получен тайм-аут; доступность сейчас не подтверждена. Это не оценка достоверности самой работы.",
+      "researchId": "NASA70"
+    },
+    {
+      "id": "source-ntia",
+      "number": 3,
+      "kind": "ОТЧЁТ NTIA",
+      "title": "Calculation of Geostationary Satellite Footprints for Certain Idealized Antennas",
+      "author": "K. P. Spies, E. J. Haakinson",
+      "year": 1980,
+      "url": "https://its.ntia.gov/umbraco/surface/download/publication?reportNumber=80-51_ocr.pdf",
+      "secondaryUrl": null,
+      "use": "Ориентиры осевого режима и предел применимости идеализированных диаграмм. Проверенный фрагмент: §6.1, печатная с.50.",
+      "access": "Открытый официальный PDF NTIA Report 80-51; глава6 проверена.",
+      "researchId": "NTIA80"
+    },
+    {
+      "id": "source-clark",
+      "number": 4,
+      "kind": "АВТОРСКИЙ УЧЕБНЫЙ МАТЕРИАЛ",
+      "title": "A Study Guide for Electromagnetics (and antennas)—with SuperNEC applications",
+      "author": "Alan Robert Clark",
+      "year": 2004,
+      "url": "https://yingtongdiddleipo.eie.wits.ac.za/elen4001/sg_v1.pdf",
+      "secondaryUrl": null,
+      "use": "Узкий рабочий диапазон оценок, формулы HPBW и входного сопротивления, объяснение поправки коэффициента15→12 со ссылкой на Kraus1988. Проверенный фрагмент: §6.4, печатные с.103–104. Указанный диапазон с N≥4 приведён в подразделе Original Kraus design на с.104.",
+      "access": "Открыто читаемый авторский учебный материал на университетском домене; copyright сохраняется, не распространять копию.",
+      "researchId": "CLARK04"
+    },
+    {
+      "id": "source-measurements",
+      "number": 5,
+      "kind": "ИЗМЕРЕНИЯ / IEEE",
+      "title": "Characteristics of 1 to 8 Wavelength Uniform Helical Antennas",
+      "author": "Howard E. King, Jimmy L. Wong",
+      "year": 1980,
+      "url": "https://doi.org/10.1109/TAP.1980.1142322",
+      "secondaryUrl": null,
+      "use": "Независимые измерения; зависимость коэффициентов от геометрии, размеров и реальной конструкции. Не переносить характеристики их конкретного образца на произвольную антенну. Проверенный фрагмент: с.291–293; исходная область формул на с.293.",
+      "access": "Библиографическая ссылка DOI. Прежняя открытая копия статьи недоступна при повторной проверке; доступ к полному тексту может требовать подписки.",
+      "researchId": "KW80"
+    },
+    {
+      "id": "source-nist",
+      "number": 6,
+      "kind": "ТЕРМИНОЛОГИЯ / NIST",
+      "title": "Recommended Terminology for Microwave Radiometry",
+      "author": "James Randa et al.",
+      "year": 2008,
+      "url": "https://www.nist.gov/system/files/documents/2017/05/09/NIST-TN-1551.pdf",
+      "secondaryUrl": null,
+      "use": "Различение направленности, коэффициента усиления и потерь; G=ηrad D₀. Проверенный фрагмент: определения Antenna gain и Antenna ohmic efficiency, печатная с.7.",
+      "access": "Открытый официальный PDF NIST Technical Note1551, август2008.",
+      "researchId": "NIST08"
+    },
+    {
+      "id": "source-nasa72",
+      "number": 7,
+      "kind": "ОТЧЁТ NASA",
+      "title": "Investigation of L-band shipboard antennas for maritime satellite applications",
+      "author": "G. P. Heckert",
+      "year": 1972,
+      "url": "https://ntrs.nasa.gov/citations/19720016511",
+      "secondaryUrl": "https://ntrs.nasa.gov/api/citations/19720016511/downloads/19720016511.pdf",
+      "use": "Показывает, что коэффициенты разных оценочных моделей различаются: в формуле4-12 дано G≈10 Cλ² N Sλ. Проверенный фрагмент: §4.7.1–4.7.2, печатная с.225.",
+      "access": "Официальная карточка NASA NTRS. При повторной сетевой проверке получен тайм-аут; доступность сейчас не подтверждена. Это не оценка достоверности самой работы.",
+      "researchId": "NASA72"
+    }
+  ]
+}

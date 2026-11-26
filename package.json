@@ -1,0 +1,8 @@
+{
+  "name": "helix-atlas-blagopoluchie",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Verified-source educational atlas of cylindrical helical antennas",
+  "scripts": {"test": "node --test tests/geometry.test.mjs"}
+}

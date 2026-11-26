@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#122b37">
+  <meta name="description" content="Понятный атлас цилиндрических винтовых антенн: устройство, режимы работы, геометрический калькулятор и проверяемые источники.">
+  <title>Винтовые антенны — инженерный атлас Благополучия</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Перейти к материалам</a>
+  <header class="topbar">
+    <a class="brand" href="#start" aria-label="Атлас: к началу"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M10 4c25 0-25 9 0 9s-25 9 0 9 25 9 0 9M26 4C1 4 51 13 26 13S51 22 26 22 1 31 26 31" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>БЛАГОПОЛУЧИЕ<small>инженерная библиотека</small></span></a>
+    <div class="top-actions"><span class="edition">АТЛАС / 01</span><button id="theme-toggle" class="quiet-button" type="button" aria-label="Включить тёмную тему">Тёмная тема</button><button id="menu-toggle" class="quiet-button mobile-only" type="button" aria-expanded="false" aria-controls="sidebar">Разделы</button></div>
+  </header>
+  <div class="layout">
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-inner">
+        <label class="search-label" for="search">Найти в атласе</label>
+        <div class="search-wrap"><input id="search" type="search" placeholder="Например, шаг витка" autocomplete="off"><span aria-hidden="true">⌕</span></div>
+        <div id="search-results" class="search-results" aria-live="polite" hidden></div>
+        <nav aria-label="Разделы атласа" id="toc">
+          <a href="#start" class="active">Обзор</a>
+          <a href="#principle">Как это работает</a>
+          <a href="#modes">Два режима</a>
+          <a href="#geometry">Геометрия и расчёт</a>
+          <a href="#estimates">Как читать характеристики</a>
+          <a href="#construction">Конструкция и проверка</a>
+          <a href="#glossary">Словарь</a>
+          <a href="#sources">Источники</a>
+        </nav>
+        <div class="reading-tools"><label for="text-size">Размер текста</label><select id="text-size"><option value="standard">Обычный</option><option value="large">Крупный</option></select><button id="print-button" type="button" class="text-button">Печать / сохранить PDF</button></div>
+        <p class="sidebar-note">От конструкции<br>к пониманию.</p>
+        <small class="version">Учебный выпуск · ноябрь 2026</small>
+      </div>
+    </aside>
+    <main id="main">
+      <section id="start" class="article-section intro" data-title="Обзор: винтовая антенна">
+        <div class="eyebrow">АНТЕННЫ / ОБЪЁМНЫЕ ПРОВОДЯЩИЕ СТРУКТУРЫ</div>
+        <div class="hero-grid">
+          <div class="hero-copy"><h1>Один провод.<br>Несколько способов<br><em>излучать.</em></h1><p class="lead">Винтовая антенна кажется простой пружиной. Её поведение определяют размеры относительно длины волны, число витков и способ питания.</p><a href="#geometry" class="primary-link">Исследовать геометрию</a><p class="scope">Здесь — цилиндрическая винтовая антенна.<br>Плоская спираль — другая конструкция.</p></div>
+          <figure class="hero-figure"><svg id="helix-hero" viewBox="0 0 480 450" role="img" aria-labelledby="helix-title helix-desc"><title id="helix-title">Цилиндрическая винтовая антенна с отражателем</title><desc id="helix-desc">Проводник навит вокруг оси над проводящим экраном. Подписи показывают диаметр, шаг и число витков. Это схема геометрии.</desc></svg><figcaption><span class="figure-dot"></span> Геометрическая схема · не диаграмма излучения</figcaption></figure>
+        </div>
+        <div class="intro-strip"><div><strong>Понять</strong><span>почему режим меняется с размерами</span></div><div><strong>Посчитать</strong><span>шаг, диаметр, длину и расход провода</span></div><div><strong>Проверить</strong><span>где заканчивается применимость модели</span></div></div>
+      </section>
+
+      <section id="principle" class="article-section" data-title="Как работает винтовая антенна">
+        <div class="section-kicker">ФИЗИЧЕСКИЙ СМЫСЛ</div><h2>Важна не форма сама по себе,<br>а ток вдоль проводника</h2>
+        <p>Переменный ток в проводнике создаёт электромагнитное поле. Поля разных участков антенны складываются с учётом их фаз и расстояния до точки наблюдения. Размеры и питание определяют, где это сложение усиливает излучение, а где ослабляет его.</p>
+        <p>При осевом режиме последовательные витки могут формировать преимущественное излучение вдоль оси. В компактном режиме картина другая: максимум обычно находится поперёк оси. Одинаковое внешнее слово «спираль» ещё не говорит, как будет работать антенна. <a class="source-ref" href="#source-kraus">[1]</a></p>
+        <div class="note"><strong>Главная мера — длина волны λ.</strong><p>Антенны одинаковой формы, но разного размера относительно λ, могут работать в разных режимах. Для геометрии в свободном пространстве λ = c / f, где c = 299 792 458 м/с.</p></div>
+        <p>Ось антенны, направление навивки и поляризация связаны, но это разные понятия. Круговую поляризацию нельзя гарантировать одной только винтовой формой: важны режим, размеры, питание и направление наблюдения.</p>
+      </section>
+
+      <section id="modes" class="article-section" data-title="Осевой и нормальный режимы. Поляризация">
+        <div class="section-kicker">РЕЖИМЫ РАБОТЫ</div><h2>Одна геометрия — разные масштабы</h2>
+        <div class="mode-grid">
+          <article class="mode-card"><span class="tag">КОМПАКТНАЯ АНТЕННА</span><h3>Нормальный режим</h3><p>В обычной электрически короткой модели размеры витка и всей навивки малы относительно длины волны. Максимум излучения расположен поперёк оси, а вдоль неё — минимум.</p><p>Используется для компактных излучателей. Уменьшение размеров сопровождается компромиссами в эффективности, согласовании и полосе.</p><div class="mode-direction"><span class="axis-line"></span><span>максимум поперёк оси</span></div></article>
+          <article class="mode-card axial"><span class="tag">НАПРАВЛЕННАЯ АНТЕННА</span><h3>Осевой режим</h3><p>Окружность витка близка к длине волны. В классической конструкции с экраном основной лепесток направлен вдоль оси, от экрана.</p><p>В основном направлении возможна близкая к круговой поляризация. Качество поляризации и характеристики требуют расчёта или измерений.</p><div class="mode-direction"><span class="axis-line along"></span><span>максимум вдоль оси</span></div></article>
+        </div>
+        <p class="caption">Сравнение описывает классические режимы. Оно не является классификатором любой произвольной навивки. Подробнее: <a href="#source-kraus">Kraus [1]</a>, <a href="#source-ntia">NTIA [3]</a>, <a href="#source-clark">Clark [4]</a>.</p>
+        <details><summary>Почему нельзя путать винтовую и плоскую спиральную антенну?</summary><p>У цилиндрической винтовой антенны витки располагаются вдоль пространственной оси. У плоской спирали проводники лежат преимущественно в плоскости, часто образуют несколько ветвей и требуют другого питания. Формулы этого атласа относятся к цилиндрической навивке.</p></details>
+        <details><summary>Что означает правая или левая круговая поляризация?</summary><p>Это направление вращения вектора электрического поля при оговорённом направлении наблюдения. В техническом описании обязательно указывают принятую конвенцию. Правая навивка сама по себе без указания направления распространения и точки наблюдения — недостаточное описание поляризации.</p></details>
+      </section>
+
+      <section id="geometry" class="article-section" data-title="Геометрия и калькулятор: частота, диаметр, шаг, число витков, длина провода">
+        <div class="section-kicker">ИНТЕРАКТИВНАЯ ГЕОМЕТРИЯ</div><h2>Измените параметры.<br>Проследите связь размеров.</h2>
+        <p>Калькулятор рассчитывает идеальную цилиндрическую навивку по её осевой линии. Он не предсказывает КСВ, усиление, диаграмму или пригодность готовой антенны.</p>
+        <div class="calculator">
+          <form id="geometry-form" novalidate>
+            <div class="preset-row"><button type="button" data-preset="axial" class="preset active" aria-pressed="true">Классические пропорции</button><button type="button" data-preset="compact" class="preset" aria-pressed="false">Компактная навивка</button></div>
+            <div class="number-fields"><label for="frequency">Частота, МГц<input id="frequency" name="frequency" type="number" value="1000" min="1" max="30000" step="1" inputmode="decimal" required></label><label for="turns">Число витков N<input id="turns" name="turns" type="number" value="8" min="1" max="30" step="1" inputmode="numeric" required></label></div>
+            <label class="range-label" for="circumference"><span>Окружность / длина волны</span><output id="circumference-value" for="circumference">1,00 λ</output></label><input id="circumference" name="circumference" type="range" min="0.05" max="1.5" step="0.01" value="1">
+            <label class="range-label" for="pitch"><span>Угол подъёма α</span><output id="pitch-value" for="pitch">13°</output></label><input id="pitch" name="pitch" type="range" min="3" max="30" step="0.5" value="13">
+            <p id="geometry-error" class="error" role="alert" hidden></p><p id="geometry-hint" class="geometry-hint">Геометрия близка к классическим пропорциям осевого режима. Режим и характеристики не подтверждены.</p>
+            <div class="calculator-actions"><button type="button" id="reset-geometry" class="secondary-button">Сбросить</button><button type="button" id="export-geometry" class="secondary-button">Скачать расчёт</button></div>
+          </form>
+          <div class="geometry-view"><span class="small-heading">РАЗВЁРТКА ОДНОГО ВИТКА</span><svg id="triangle" viewBox="0 0 440 240" role="img" aria-label="Прямоугольный треугольник: основание C, высота S, гипотенуза — длина провода одного витка"><path id="triangle-fill" d="M45 190 L390 190 L390 70 Z"/><path id="triangle-wire" d="M45 190 L390 70"/><path class="triangle-dim" d="M45 190 H390 V70"/><path id="angle-arc" d="M105 190 A60 60 0 0 0 102 169"/><text x="210" y="220">C = πd</text><text id="triangle-s-label" x="400" y="135">S</text><text id="triangle-alpha-label" x="117" y="179">α</text><text id="triangle-wire-label" x="190" y="110">провод одного витка</text></svg><p>Если развернуть цилиндр на плоскость, виток станет наклонной прямой: <strong>tan α = S / C</strong>.</p></div>
+        </div>
+        <div id="geometry-results" class="results-grid" aria-live="polite" aria-atomic="true">
+          <div><span>Длина волны λ</span><strong id="result-wavelength">—</strong></div><div><span>Диаметр d</span><strong id="result-diameter">—</strong></div><div><span>Окружность C</span><strong id="result-circumference">—</strong></div><div><span>Шаг витка S</span><strong id="result-spacing">—</strong></div><div><span>Осевая длина L</span><strong id="result-length">—</strong></div><div><span>Длина провода ℓ</span><strong id="result-wire">—</strong></div>
+        </div>
+        <p class="caption">λ в свободном пространстве. Длина провода не включает подвод, согласование и припуск. Толщина проводника, каркас и экран в геометрической модели не учитываются. Скачиваемый JSON сохраняет исходные параметры, формулы и ограничения.</p>
+        <div class="formula-list"><div><code>λ = c / f</code><span>перевести МГц в Гц</span></div><div><code>d = C / π</code><span>диаметр осевой линии провода</span></div><div><code>S = C · tan α</code><span>расстояние вдоль оси за один виток</span></div><div><code>L = N · S</code><span>осевая длина идеальной навивки</span></div><div><code>ℓ = N · √(C² + S²)</code><span>длина осевой линии проводника</span></div></div>
+      </section>
+
+      <section id="estimates" class="article-section" data-title="Направленность, усиление, ширина луча и приближённые формулы">
+        <div class="section-kicker">ГРАНИЦЫ РАСЧЁТА</div><h2>Размеры известны.<br>Характеристики ещё нужно доказать.</h2>
+        <p>Геометрические равенства описывают форму. Электродинамические характеристики зависят также от тока, потерь, экрана, питания, материалов и окружения. Для них применяют численное моделирование и измерения.</p>
+        <div class="comparison-table"><table><caption>Какие величины нельзя подменять друг другом</caption><thead><tr><th>Величина</th><th>Что описывает</th><th>Чего не доказывает</th></tr></thead><tbody><tr><th scope="row">КНД D₀</th><td>Концентрацию излучаемой мощности по направлениям</td><td>Эффективность и согласование</td></tr><tr><th scope="row">Усиление G</th><td>Направленность с учётом эффективности антенны</td><td>Доставку мощности от реального источника</td></tr><tr><th scope="row">Реализованное усиление</th><td>Для однопортовой антенны также учитывает рассогласование при заданном опорном сопротивлении</td><td>Потери всей внешней линии без её явного включения</td></tr><tr><th scope="row">КСВ / S₁₁</th><td>Согласование на заданной частоте и плоскости отсчёта</td><td>КПД, направленность и поляризацию</td></tr></tbody></table></div>
+        <div class="note caution"><strong>У приближённой формулы есть область применения.</strong><p>Здесь d обозначает диаметр, а D₀ — коэффициент направленного действия. В литературе встречаются оценки осевого режима вида D₀ ≈ k · N · (C/λ)² · (S/λ). Значение k и допустимые пропорции зависят от выбранной модели и источника. Подстановка произвольной геометрии не даёт достоверного усиления. Поэтому этот атлас не выводит «точное число дБ» по одним размерам. <a class="source-ref" href="#source-kraus">[1]</a> <a class="source-ref" href="#source-nasa">[2]</a></p></div>
+        <p>Даже увеличение числа витков нельзя читать как неограниченный рост полезного усиления. Практическая конструкция требует проверки распределения токов, потерь и диаграммы. При сравнении результатов фиксируют частоту, поляризацию, базу дБ (например, dBi), условия и метод измерения. <a class="source-ref" href="#source-nist">[6]</a></p>
+        <details><summary>Почему в разных книгах встречаются разные коэффициенты?</summary><p>Эмпирические формулы описывают определённые семейства антенн и экспериментов. Различия могут отражать другую область размеров, способ определения величины и условия измерения. Коэффициент нельзя выбирать по большему результату: сначала выбирают применимую модель и проверяют, что её предпосылки выполнены.</p></details>
+      </section>
+
+      <section id="construction" class="article-section" data-title="Конструкция: провод, каркас, экран, питание, согласование и измерения">
+        <div class="section-kicker">ОТ СХЕМЫ К ИЗДЕЛИЮ</div><h2>Пять частей реальной конструкции</h2>
+        <div class="construction-list"><article><span class="part-index">A</span><div><h3>Проводник</h3><p>Диаметр, шаг, число витков и толщина провода — разные параметры. Размеры навивки задают по осевой линии проводника. Контролируют повторяемость шага и форму, а не только общую длину заготовки.</p></div></article><article><span class="part-index">B</span><div><h3>Каркас и крепления</h3><p>Поддерживают геометрию, но могут менять электрическое поведение. Учитывают диэлектрические свойства, потери, влажность и механическую стабильность. Формула для свободного пространства не описывает влияние конкретного каркаса.</p></div></article><article><span class="part-index">C</span><div><h3>Экран / отражатель</h3><p>В классической односторонней осевой конструкции проводящий экран расположен у точки питания. Его размер, форма и связь с остальными элементами влияют на входные и пространственные характеристики. Экран не заменяет проверку конструкции.</p></div></article><article><span class="part-index">D</span><div><h3>Питание и согласование</h3><p>Переход от линии к первому витку — часть антенны. Нельзя считать вход автоматически согласованным с 50 Ом. Согласование проектируют для конкретного исполнения и проверяют измерением.</p></div></article><article><span class="part-index">E</span><div><h3>Монтаж и измерительная среда</h3><p>Кабель, крепёж, близкие металлические предметы и оболочка могут влиять на результат. Записывают условия измерения и сохраняют исходные данные, чтобы сравнение версий оставалось осмысленным.</p></div></article></div>
+        <div class="checklist-block"><h3>Последовательность проверки</h3><ol><li>Определить режим и требования: частоту, полосу, поляризацию, габариты.</li><li>Зафиксировать геометрию, материалы, экран и питание одной ревизии.</li><li>Выбрать применимую модель и проверить её ограничения.</li><li>Измерить согласование в известной плоскости отсчёта.</li><li>Отдельно проверить диаграмму, усиление и поляризацию нужным методом.</li><li>Сопоставить измерения с моделью и сохранить расхождения.</li></ol></div>
+        <p class="caption">Это учебный маршрут проверки, а не готовая производственная документация. Атлас не задаёт режимов передатчика.</p>
+      </section>
+
+      <section id="glossary" class="article-section" data-title="Словарь терминов: длина волны, шаг, угол подъёма, поляризация, КНД, КСВ">
+        <div class="section-kicker">КОРОТКИЙ СЛОВАРЬ</div><h2>Термины без лишнего тумана</h2>
+        <dl class="glossary"><div><dt>Длина волны λ</dt><dd>Расстояние, на которое распространяется фаза волны за период. Здесь рассчитывается для свободного пространства.</dd></div><div><dt>Шаг S</dt><dd>Осевое перемещение за один полный оборот навивки.</dd></div><div><dt>Угол подъёма α</dt><dd>Угол между касательной к винтовой линии и плоскостью, перпендикулярной оси.</dd></div><div><dt>Окружность C</dt><dd>Длина окружности по осевой линии провода: C = πd.</dd></div><div><dt>Поляризация</dt><dd>Поведение вектора электрического поля во времени в выбранном направлении наблюдения.</dd></div><div><dt>КНД / directivity</dt><dd>Мера концентрации излучения в заданном направлении относительно изотропного излучателя при той же излучаемой мощности.</dd></div><div><dt>dBi</dt><dd>Логарифмическое сравнение с изотропным излучателем. Нужно уточнять, какая величина выражена: КНД, усиление или реализованное усиление.</dd></div><div><dt>Осевой коэффициент / axial ratio</dt><dd>Отношение большой и малой осей эллипса поляризации. Для идеальной круговой поляризации равно 1, или 0 дБ.</dd></div><div><dt>КСВ</dt><dd>Коэффициент стоячей волны в линии. Характеризует рассогласование при заданных условиях, но не эффективность излучения.</dd></div></dl>
+      </section>
+
+      <section id="sources" class="article-section" data-title="Первоисточники и происхождение материалов">
+        <div class="section-kicker">ПРОИСХОЖДЕНИЕ ЗНАНИЙ</div><h2>Проверяйте по источникам</h2><p>Текст и схемы атласа созданы для этого выпуска. Ниже — внешние работы, по которым можно проверить физические объяснения и ограничения. Геометрические формулы выведены из развёртки цилиндра; эмпирические зависимости рассматриваются отдельно.</p>
+        <div id="source-list" class="source-list"><p>Подготовка библиографии…</p></div>
+        <div class="project-note"><span class="tag">О ПРОЕКТЕ</span><h3>Первый учебный выпуск ШТАБА БЛАГОПОЛУЧИЯ</h3><p>Эта версия объединяет подбор источников, авторское объяснение, геометрическую модель и программную проверку. Она не заявляет натурных измерений или электродинамического моделирования готовой антенны.</p><p>Сохраняются параметры расчёта и ваши настройки чтения. Учётная запись для самого калькулятора не нужна; вычисления происходят в браузере. Внешние источники открываются по вашим ссылкам.</p><a id="download-sources" href="./sources.json" download="helix-sources.json">Скачать реестр источников</a></div>
+      </section>
+      <footer class="footer"><span>БЛАГОПОЛУЧИЕ / ИНЖЕНЕРНЫЙ АТЛАС</span><a href="#start">К началу</a><span>Версия 1.0 · 25.11.2026</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>
