@@ -274,3 +274,8 @@ export_part
 # License
 
 Open hardware / open design.
+
+
+## Модели КОМПАС-3D
+
+[Антенное поле и секционный защитный колпак](kompas/antenna-field-cover/README.md) — опытный комплект моделей и инструкция по восстановлению.
